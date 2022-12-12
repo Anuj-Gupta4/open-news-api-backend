@@ -4,7 +4,7 @@ from django.db import models
 class Article(models.Model):
     headline = models.CharField(max_length=200, default='Enter headline here')
     byline = models.CharField(max_length=100, default='write author name here')
-    # image = models.ImageField(max_length = 254)
+    image = models.ImageField(upload_to="my_picture", blank=True)
     introduction = models.TextField(max_length=1500, default='write intro here')
     body = models.TextField(max_length=1500, default='this is the body of your article')
     conclusion = models.TextField(max_length=1500, default='conclude your article')
