@@ -14,10 +14,10 @@ def apiOverview(request):
     api_urls = {
         'List': '/article-list/',
         'Search': '/article-list?search=gaida',
-                'Detail View': '/article-detail/<str:pk>/',
-                'Create': '/article-create/',
-                'Update': '/article-update/<str:pk>/',
-                'Delete': '/article-delete/<str:pk>/',
+        'Detail View': '/article-detail/<str:pk>/',
+        'Create': '/article-create/',
+        'Update': '/article-update/<str:pk>/',
+        'Delete': '/article-delete/<str:pk>/',
     }
 
     return Response(api_urls)
@@ -73,8 +73,8 @@ def articleCreate(request):
     serializer = ArticleSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-    return Response(serializer.data)
-
+        return Response(serializer.data)
+    return Response("create error")
 
 @api_view(['GET'])
 def articleDetail(request, pk):
@@ -89,7 +89,8 @@ def articleUpdate(request, pk):
     serializer = ArticleSerializer(instance=articles, data=request.data)
     if serializer.is_valid():
         serializer.save()
-    return Response(serializer.data)
+        return Response(serializer.data)
+    return Response("update error")
 
 
 @api_view(['DELETE'])
