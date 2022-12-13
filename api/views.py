@@ -18,8 +18,13 @@ def apiOverview(request):
         'Create': '/article-create/',
         'Update': '/article-update/<str:pk>/',
         'Delete': '/article-delete/<str:pk>/',
-    }
-
+        'Fashion News':'article-list/fashion',
+        'Sports News':'article-list/sports', 
+        'National News':'article-list/national',
+        'Political News':'article-list/politics',
+        'Other News':'article-list/others', 
+        'Finance News':'article-list/finance',
+        }
     return Response(api_urls)
 
 
@@ -96,5 +101,7 @@ def articleUpdate(request, pk):
 @api_view(['DELETE'])
 def articleDelete(request, pk):
     articles = Article.objects.get(id=pk)
-    articles.delete()
-    return Response('deleted')
+    if articles:
+        articles.delete()
+        return Response('deleted')
+    return Response('Does not exist')
