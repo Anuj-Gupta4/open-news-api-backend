@@ -4,6 +4,14 @@ from django.db import models
 
 
 class Article(models.Model):
+    tag_choice = [
+        ('NATIONAL', 'National'),
+        ('FASHION', 'Fashion'),
+        ('SPORTS', 'Sports'),
+        ('POLITICS', 'Politics'),
+        ('FINANCE', 'Finance'),
+        ('OTHERS', 'Others')
+    ]
     headline = models.CharField(max_length=200, default='Enter headline here')
     byline = models.CharField(max_length=100, default='write author name here')
     image = models.ImageField(upload_to="my_picture", blank=True)
@@ -14,6 +22,8 @@ class Article(models.Model):
     conclusion = models.TextField(
         max_length=1500, default='conclude your article')
     published = models.BooleanField(default=False)
+    tags = models.CharField(
+        max_length=10, choices=tag_choice, default='OTHERS',)
 
     def __str__(self):
         return self.headline
