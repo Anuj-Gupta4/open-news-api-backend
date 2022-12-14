@@ -13,7 +13,7 @@ from rest_framework import generics
 def apiOverview(request):
     api_urls = {
         'List': '/article-list/',
-        'Search': '/article-list?search=gaida',
+        'Search': '/article-search?search=gaida',
         'Detail View': '/article-detail/<str:pk>/',
         'Create': '/article-create/',
         'Update': '/article-update/<str:pk>/',
@@ -34,6 +34,13 @@ def articleList(request):
     print(articles)
     serializer = ArticleSerializer(articles, many=True)
     return Response(serializer.data)
+
+
+class UserSearchView(generics.ListAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    filter_backends = [SearchFilter]
+    search_fields = ['$tags', '=id', '$headline', '$byline']
 
 
 class UserListView(generics.ListAPIView):
