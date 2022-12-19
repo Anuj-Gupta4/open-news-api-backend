@@ -12,8 +12,12 @@ A news portal app made for Leapfrog Revampathon 2022 by Team Enigma
 
 # Demo(compressed video):
 
-https://user-images.githubusercontent.com/84966248/207592055-c11dceb0-f204-42e4-8d29-31ef3152b8cd.mp4
+https://user-images.githubusercontent.com/84966248/208413289-cab596cb-a8c6-4fcd-a634-b378853af0c1.mp4
 
-# Frontend
+# Newer Frontend
+
+[React Frontend](https://github.com/rupakhetibinit/news-website)
+
+# Old Frontend
 
 [React Frontend](https://github.com/rupakhetibinit/open-news-frontend)
